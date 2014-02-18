@@ -11,7 +11,7 @@ namespace Service
     public interface IService
     {
         [OperationContract]
-        string SayHello(string name);
+        List<string[]> ReadStockPriceFromCSV();
     }
 
 
