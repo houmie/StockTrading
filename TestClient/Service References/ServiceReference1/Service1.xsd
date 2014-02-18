@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model" nillable="true" type="tns:Model" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModel" nillable="true" type="tns:ArrayOfModel" />
+  <xs:complexType name="Model">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DayHighPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="DayLowPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="LastTradeDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastTradePrice" type="xs:double" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpenPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Model" nillable="true" type="tns:Model" />
+</xs:schema>

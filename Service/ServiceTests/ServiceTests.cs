@@ -24,9 +24,12 @@ namespace Service.Tests
         [Test()]
         public void ReadStockPriceFromCSVTest()
         {
-            _service.DownloadStockPriceFromYahoo();
-            List<string[]> result = _service.ReadStockPriceFromCSV();
-            Assert.IsNotNull(result);
+            if (!File.Exists(_path))
+            {
+                _service.DownloadStockPriceFromYahoo();
+            }            
+            List<Model> result = _service.ReadStockPriceFromCSV();
+            Assert.True(result.Count > 0);
         }
 
         [Test()]

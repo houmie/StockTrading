@@ -7,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    [ServiceContract]
+    [ServiceContract(Namespace="http://venuscloud.com/StockTrading", SessionMode=SessionMode.Required, CallbackContract=typeof(IClient))]
     public interface IService
     {
-        [OperationContract]
-        List<string[]> ReadStockPriceFromCSV();
+        [OperationContract(IsOneWay = false, IsInitiating = true)]
+        void Subscribe();
+
+        [OperationContract(IsOneWay=false, IsTerminating=true)]
+        void Unsubscribe();              
+
     }
+
 
 
 }

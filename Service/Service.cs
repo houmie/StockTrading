@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
 using System.Net;
 using System.IO;
+using System.ServiceModel;
+using System.Threading;
+using System.Globalization;
 
 namespace Service
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {
-        readonly string _path = @"quotes.csv";
+        readonly string _path = @"quotes.csv";        
+        public static event EventHandler<PriceChangeEventArgs> PriceChanged;
+        IClient _callback = null;                     
 
         public void DownloadStockPriceFromYahoo()
         {
@@ -21,41 +27,89 @@ namespace Service
             }
             using (WebClient Client = new WebClient())
             {
-                Client.DownloadFile("http://finance.yahoo.com/d/quotes.csv?s=MSFT&f=snl1d1ohg", _path);
+                Client.DownloadFile("http://finance.yahoo.com/d/quotes.csv?s=MSFT+INTC+GM&f=snl1d1ohg", _path);
             }
         }
 
 
-        public List<string[]> ReadStockPriceFromCSV()
+        public List<Model> ReadStockPriceFromCSV()
         {
-            DownloadStockPriceFromYahoo();
+            var result = new List<Model>();
+            //DownloadStockPriceFromYahoo();
             if (File.Exists(_path))
-            {
+            {                
                 using (var myReader = new TextFieldParser(_path))
                 {
                     myReader.TextFieldType = FieldType.Delimited;
                     myReader.Delimiters = new string[] { "," };
-                    string[] currentRow;
+                    string[] row;
                     while (!myReader.EndOfData)
                     {
                         try
                         {
-                            currentRow = myReader.ReadFields();
-                            var list = new List<string[]>();
-                            list.Add(currentRow);
-                            return list;
+                            row = myReader.ReadFields();
+                            Model model = new Model() { 
+                                                        Symbol = row[0], 
+                                                        Name = row[1],                                                         
+                            };
+                            double lastTradePrice;
+                            double.TryParse(row[2], out lastTradePrice);
+                            model.LastTradePrice = lastTradePrice;
+
+                            DateTime lastTradeDate;
+                            DateTime.TryParseExact(row[3], "M/dd/yyyy", null, DateTimeStyles.None, out lastTradeDate);
+                            model.LastTradeDate = lastTradeDate;
+
+                            double openPrice;
+                            double.TryParse(row[4], out openPrice);
+                            model.OpenPrice = openPrice;
+
+                            double dayHighPrice;
+                            double.TryParse(row[5], out dayHighPrice);
+                            model.DayHighPrice = dayHighPrice;
+
+                            double dayLowPrice;
+                            double.TryParse(row[6], out dayLowPrice);
+                            model.DayLowPrice = dayLowPrice;
+                            result.Add(model);
                         }
-                        catch (MalformedLineException ex)
+                        catch (MalformedLineException)
                         {
                             throw;
                         }
                     }
-                }
+                }                
             }
-            return null;
+            return result;
         }
 
+        public void Subscribe()
+        {
+            _callback = OperationContext.Current.GetCallbackChannel<IClient>();            
+            PriceChanged += PriceChangeHandler;
 
+            Task.Run(() =>
+            {
+                Thread.Sleep(5000);
+                PublishPriceChange();
+            });
+        }
 
+        public void PriceChangeHandler(object sender, PriceChangeEventArgs e)
+        {
+            _callback.PriceChange(e.Quotes);
+        }
+
+        public void Unsubscribe()
+        {
+            PriceChanged -= PriceChangeHandler;
+        }
+
+        public void PublishPriceChange()
+        {
+            List<Model> quotes = ReadStockPriceFromCSV();
+            PriceChangeEventArgs e = new PriceChangeEventArgs(quotes);            
+            PriceChanged(this, e);
+        }
     }
 }

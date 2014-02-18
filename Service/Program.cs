@@ -16,7 +16,8 @@ namespace Service
             {
                 host.Open();
 
-                Console.WriteLine("The StockTrading Service is ready over" + Environment.NewLine + "{0}", host.BaseAddresses[0]);
+                Console.WriteLine("The StockTrading Service is ready at" + Environment.NewLine + "{0}", host.BaseAddresses[0]);
+                Console.WriteLine("Please start your clients...");
                 Console.WriteLine();
                 Console.WriteLine("Press any key to stop the service.");
                 Console.ReadLine();

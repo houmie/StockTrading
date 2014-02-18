@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="39a2f578-d187-4b9f-982f-10bdaa7dc7d2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:8523/StockTradingService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="StockTrading.wsdl" MetadataType="Wsdl" ID="2b0804b9-8dbb-4a75-b3d9-c172af4f271e" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="3d8b10a4-95b9-454a-a3ec-35755b3046f5" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
+    <MetadataFile FileName="StockTrading.xsd" MetadataType="Schema" ID="37e859b6-9bcb-4892-a24c-d47a64cfc09e" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2b312840-bdb0-4429-92ad-f9d0fbe4d103" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="68345909-0785-49a8-9ace-a102f0a24dac" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
