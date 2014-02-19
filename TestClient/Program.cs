@@ -45,6 +45,7 @@ namespace TestClient
                 Console.WriteLine("DayHighPrice: {0}", quotes[i].DayHighPrice);
                 Console.WriteLine("DayLowPrice : {0}", quotes[i].DayLowPrice);
                 Console.WriteLine();
+                Console.WriteLine("-------------------------------");
             }
         }
     }

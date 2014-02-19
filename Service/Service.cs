@@ -9,6 +9,7 @@ using System.IO;
 using System.ServiceModel;
 using System.Threading;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Service
 {
@@ -118,7 +119,7 @@ namespace Service
             _callback = OperationContext.Current.GetCallbackChannel<IClient>();            
             PriceChanged += PriceChangeHandler;
 
-            PublishPriceChange();            
+            Task task = PublishPriceChange();            
         }
 
         public void PriceChangeHandler(object sender, PriceChangeEventArgs e)
@@ -131,26 +132,24 @@ namespace Service
             PriceChanged -= PriceChangeHandler;
         }
 
-        public void PublishPriceChange()
+        private async Task<bool> PublishPriceChange()
         {
-            for (int i = 0; i < 5; i++)
-            {                
-                //Task.Run(() =>
+            bool isFinished = false;
+            await Task.Run(() =>
                 {
-                    int j = i;
-                    Thread.Sleep(1000);
-                    //lock (_locker)
+                    lock (_locker)
                     {
-                        TransformPrices(_quotes);
-                        PriceChangeEventArgs e = new PriceChangeEventArgs(_quotes);
-                        PriceChanged(this, e);
-                    }                                        
-                }                
-            }
-
-            
-                        
-            
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Thread.Sleep(1000);
+                            TransformPrices(_quotes);
+                            PriceChangeEventArgs e = new PriceChangeEventArgs(_quotes);
+                            PriceChanged(this, e);
+                        }
+                        isFinished = true;
+                    }                    
+                });
+            return isFinished;
         }
     }
 }
