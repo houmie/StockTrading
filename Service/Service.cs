@@ -17,7 +17,15 @@ namespace Service
     {
         readonly string _path = @"quotes.csv";        
         public static event EventHandler<PriceChangeEventArgs> PriceChanged;
-        IClient _callback = null;                     
+        IClient _callback = null;
+        List<Model> _quotes;
+        readonly object _locker = new object();
+
+        public Service()
+        {
+            _quotes = ReadStockPriceFromCSV();
+        }
+
 
         public void DownloadStockPriceFromYahoo()
         {
@@ -83,16 +91,34 @@ namespace Service
             return result;
         }
 
+        public void TransformPrices(List<Model> quotes)
+        {
+            foreach (Model model in quotes)
+            {
+                Thread.Sleep(1);
+                Random random = new Random();
+                double dayLowPrice = model.DayLowPrice - model.DayLowPrice * 0.05;
+                double dayHighPrice = model.DayHighPrice + model.DayHighPrice * 0.05;
+                model.LastTradePrice = random.NextDouble() * (dayHighPrice - dayLowPrice) + dayLowPrice;
+                if (model.LastTradeDate < DateTime.Now.Date)
+                {
+                    model.DayHighPrice = model.LastTradePrice;
+                    model.DayLowPrice = model.LastTradePrice;
+                    model.OpenPrice = model.LastTradePrice;
+                }
+                model.LastTradeDate = DateTime.Now.Date;
+                model.DayHighPrice = model.LastTradePrice > model.DayHighPrice ? model.LastTradePrice : model.DayHighPrice;
+                model.DayLowPrice = model.LastTradePrice < model.DayLowPrice ? model.LastTradePrice : model.DayLowPrice;
+            }
+        }
+
+
         public void Subscribe()
         {
             _callback = OperationContext.Current.GetCallbackChannel<IClient>();            
             PriceChanged += PriceChangeHandler;
 
-            Task.Run(() =>
-            {
-                Thread.Sleep(5000);
-                PublishPriceChange();
-            });
+            PublishPriceChange();            
         }
 
         public void PriceChangeHandler(object sender, PriceChangeEventArgs e)
@@ -107,9 +133,24 @@ namespace Service
 
         public void PublishPriceChange()
         {
-            List<Model> quotes = ReadStockPriceFromCSV();
-            PriceChangeEventArgs e = new PriceChangeEventArgs(quotes);            
-            PriceChanged(this, e);
+            for (int i = 0; i < 5; i++)
+            {                
+                //Task.Run(() =>
+                {
+                    int j = i;
+                    Thread.Sleep(1000);
+                    //lock (_locker)
+                    {
+                        TransformPrices(_quotes);
+                        PriceChangeEventArgs e = new PriceChangeEventArgs(_quotes);
+                        PriceChanged(this, e);
+                    }                                        
+                }                
+            }
+
+            
+                        
+            
         }
     }
 }
