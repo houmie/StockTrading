@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="66ae6fb6-f287-458f-8a0b-7111d3b403be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/StockTradingService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="StockTradingService.disco" MetadataType="Disco" ID="20c6000f-3bbf-4734-b52d-99091ab07841" SourceId="1" SourceUrl="http://localhost/StockTradingService?disco" />
+    <MetadataFile FileName="StockTradingService.xsd" MetadataType="Schema" ID="e6935690-9b59-4a0e-b7f0-7c1e71788f16" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="bedf30fb-2b4e-4ad4-bdc1-1a93e7adffe4" SourceId="1" SourceUrl="http://localhost/StockTradingService?wsdl" />
+    <MetadataFile FileName="StockTradingService1.xsd" MetadataType="Schema" ID="0d809e67-e94c-4d06-80f5-59d75757edc8" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd0" />
+    <MetadataFile FileName="StockTradingService.wsdl" MetadataType="Wsdl" ID="251abd24-3a07-4900-8bed-d2e8d5e43e33" SourceId="1" SourceUrl="http://localhost/StockTradingService?wsdl=wsdl0" />
+    <MetadataFile FileName="StockTradingService2.xsd" MetadataType="Schema" ID="b3039112-2dfe-406b-8f39-2d3b94001fca" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

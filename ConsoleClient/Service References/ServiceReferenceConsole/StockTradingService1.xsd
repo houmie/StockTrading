@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://venuscloud.com/StockTrading" elementFormDefault="qualified" targetNamespace="http://venuscloud.com/StockTrading" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/Service" />
+  <xs:import schemaLocation="http://localhost/StockTradingService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Service" />
   <xs:element name="Subscribe">
     <xs:complexType>
       <xs:sequence />

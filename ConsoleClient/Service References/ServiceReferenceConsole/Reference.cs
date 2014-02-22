@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleClient.ServiceReference1 {
+namespace ConsoleClient.ServiceReferenceConsole {
     using System.Runtime.Serialization;
     using System;
     
@@ -155,7 +155,7 @@ namespace ConsoleClient.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://venuscloud.com/StockTrading", ConfigurationName="ServiceReference1.IService", CallbackContract=typeof(ConsoleClient.ServiceReference1.IServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://venuscloud.com/StockTrading", ConfigurationName="ServiceReferenceConsole.IService", CallbackContract=typeof(ConsoleClient.ServiceReferenceConsole.IServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://venuscloud.com/StockTrading/IService/Subscribe", ReplyAction="http://venuscloud.com/StockTrading/IService/SubscribeResponse")]
@@ -175,16 +175,16 @@ namespace ConsoleClient.ServiceReference1 {
     public interface IServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://venuscloud.com/StockTrading/IService/PriceChange")]
-        void PriceChange(ConsoleClient.ServiceReference1.Model[] quotes);
+        void PriceChange(ConsoleClient.ServiceReferenceConsole.Model[] quotes);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : ConsoleClient.ServiceReference1.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : ConsoleClient.ServiceReferenceConsole.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.DuplexClientBase<ConsoleClient.ServiceReference1.IService>, ConsoleClient.ServiceReference1.IService {
+    public partial class ServiceClient : System.ServiceModel.DuplexClientBase<ConsoleClient.ServiceReferenceConsole.IService>, ConsoleClient.ServiceReferenceConsole.IService {
         
         public ServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {

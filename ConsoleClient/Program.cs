@@ -1,22 +1,28 @@
-﻿using System;
+﻿using ConsoleClient.ServiceReferenceConsole;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleClient.ServiceReference1;
+
 
 namespace ConsoleClient
 {
     class Program : IServiceCallback
     {
+        static ServiceClient _client;
+
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+                
+
             InstanceContext site = new InstanceContext(null, new Program());
-            ServiceClient client = new ServiceClient(site);
+            _client = new ServiceClient(site);
             //Subscribe.
             Console.WriteLine("Subscribing");
-            client.Subscribe();
+            _client.Subscribe();
 
             Console.WriteLine();
             
@@ -24,13 +30,17 @@ namespace ConsoleClient
             Console.ReadLine();
 
             Console.WriteLine("Unsubscribing");
-            client.Unsubscribe();
+            _client.Unsubscribe();
 
             //Closing the client gracefully closes the connection and cleans up resources
-            client.Close();
+            _client.Close();
         }
 
-
+        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            _client.Close();
+        }
+        
 
         public void PriceChange(Model[] quotes)
         {

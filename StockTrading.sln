@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service.csproj", "{5887895D-16CF-4FDB-BD62-45F3B5B8E253}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{5887895D-16CF-4FDB-BD62-45F3B5B8E253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTests", "ServiceTests\ServiceTests.csproj", "{F6594D7F-2F99-4019-9E62-3CF92E3BB409}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTests", "Service\ServiceTests\ServiceTests.csproj", "{F6594D7F-2F99-4019-9E62-3CF92E3BB409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFClient", "..\WPFClient\WPFClient.csproj", "{14923D87-414A-4EB7-AA10-D78E293CC1CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFClient", "WPFClient\WPFClient.csproj", "{14923D87-414A-4EB7-AA10-D78E293CC1CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "..\ConsoleClient\ConsoleClient.csproj", "{EDC400C7-09F9-49F0-8497-3C2471B49B91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{EDC400C7-09F9-49F0-8497-3C2471B49B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XBAPClient", "..\XBAPClient\XBAPClient.csproj", "{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XBAPClient", "XBAPClient\XBAPClient.csproj", "{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
