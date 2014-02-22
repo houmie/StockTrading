@@ -4,9 +4,9 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using TestClient.ServiceReference1;
+using ConsoleClient.ServiceReference1;
 
-namespace TestClient
+namespace ConsoleClient
 {
     class Program : IServiceCallback
     {

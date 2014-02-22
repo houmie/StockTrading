@@ -137,17 +137,24 @@ namespace Service
             bool isFinished = false;
             await Task.Run(() =>
                 {
-                    lock (_locker)
+                    try
                     {
-                        for (int i = 0; i < 5; i++)
+                        lock (_locker)
                         {
-                            Thread.Sleep(1000);
-                            TransformPrices(_quotes);
-                            PriceChangeEventArgs e = new PriceChangeEventArgs(_quotes);
-                            PriceChanged(this, e);
+                            for (int i = 0; i < 25; i++)
+                            {
+                                Thread.Sleep(1000);
+                                TransformPrices(_quotes);
+                                PriceChangeEventArgs e = new PriceChangeEventArgs(_quotes);
+                                PriceChanged(this, e);
+                            }
+                            isFinished = true;
                         }
-                        isFinished = true;
-                    }                    
+                    }
+                    catch (Exception)
+                    {                        
+                        
+                    }                                        
                 });
             return isFinished;
         }
