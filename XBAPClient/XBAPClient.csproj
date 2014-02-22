@@ -4,18 +4,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14923D87-414A-4EB7-AA10-D78E293CC1CD}</ProjectGuid>
+    <ProjectGuid>{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WPFClient</RootNamespace>
-    <AssemblyName>WPFClient</AssemblyName>
+    <RootNamespace>XBAPClient</RootNamespace>
+    <AssemblyName>XBAPClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <EnableSecurityDebugging>true</EnableSecurityDebugging>
+    <Install>False</Install>
+    <StartAction>URL</StartAction>
+    <HostInBrowser>true</HostInBrowser>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <TargetZone>Internet</TargetZone>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>True</SignManifests>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -78,20 +84,19 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EventAggregatorHelper.cs" />
-    <Compile Include="PriceChangedEvent.cs" />
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="RowViewModel.cs" />
+    <Compile Include="EventAggregatorHelper.cs" />
     <Compile Include="MainViewModel.cs" />
-    <Compile Include="Service References\ServiceReferenceWPF\Reference.cs">
+    <Compile Include="PriceChangedEvent.cs" />
+    <Compile Include="RowViewModel.cs" />
+    <Compile Include="Service References\ServiceReferenceXBAP\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxy.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -99,8 +104,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -122,48 +127,57 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Properties\app.manifest" />
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\ServiceReferenceWPF\Service.wsdl" />
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService.wsdl" />
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService.xsd">
+    <None Include="Service References\ServiceReferenceXBAP\Service.wsdl" />
+    <None Include="Service References\ServiceReferenceXBAP\StockTradingService.wsdl" />
+    <None Include="Service References\ServiceReferenceXBAP\StockTradingService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService1.xsd">
+    <None Include="Service References\ServiceReferenceXBAP\StockTradingService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService2.xsd">
+    <None Include="Service References\ServiceReferenceXBAP\StockTradingService2.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <None Include="XBAPClient_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReferenceWPF\" />
+    <WCFMetadataStorage Include="Service References\ServiceReferenceXBAP\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService.disco" />
+    <None Include="Service References\ServiceReferenceXBAP\StockTradingService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceWPF\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReferenceXBAP\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceWPF\configuration.svcinfo" />
+    <None Include="Service References\ServiceReferenceXBAP\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceWPF\Reference.svcmap">
+    <None Include="Service References\ServiceReferenceXBAP\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <PropertyGroup>
+    <StartArguments />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>XBAPClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C848AAE20E417180089E386E911C1DD81662FEC6</ManifestCertificateThumbprint>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFClient", "..\WPFClient\W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "..\ConsoleClient\ConsoleClient.csproj", "{EDC400C7-09F9-49F0-8497-3C2471B49B91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XBAPClient", "..\XBAPClient\XBAPClient.csproj", "{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EDC400C7-09F9-49F0-8497-3C2471B49B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC400C7-09F9-49F0-8497-3C2471B49B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC400C7-09F9-49F0-8497-3C2471B49B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D82CFAD-98A4-4133-BED4-FA50DA65EF7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea301834-acc4-4954-a80f-4121bfab8bf5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7ef826d4-a221-4c7e-85cc-9a829709cf30" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="net.tcp://localhost:8523/StockTradingService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost/StockTradingService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StockTrading.wsdl" MetadataType="Wsdl" ID="0463c4eb-a796-4eb8-85ac-6dc70c25e7e0" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="39aa0d37-29ec-43bd-87d1-948cb2fcdb77" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
-    <MetadataFile FileName="StockTrading.xsd" MetadataType="Schema" ID="4d236615-fe53-4920-9fca-e42200f8fed7" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="4bea81ce-627d-494e-94fd-f4b432eb6607" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="ad5f55b7-45cf-4457-a2d5-f7842cfb7415" SourceId="1" SourceUrl="net.tcp://localhost:8523/StockTradingService/mex" />
+    <MetadataFile FileName="StockTradingService.disco" MetadataType="Disco" ID="fc384703-b03a-4919-94d8-70ac14d62276" SourceId="1" SourceUrl="http://localhost/StockTradingService?disco" />
+    <MetadataFile FileName="StockTradingService.xsd" MetadataType="Schema" ID="e9da704b-dd19-40e4-b28e-4b26ce9bb383" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="d8a9cf8b-040d-408b-aa39-d0e0efefcdaf" SourceId="1" SourceUrl="http://localhost/StockTradingService?wsdl" />
+    <MetadataFile FileName="StockTradingService1.xsd" MetadataType="Schema" ID="7da4a2c5-e0bc-4c67-8265-e0f8f3cc3f53" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd0" />
+    <MetadataFile FileName="StockTradingService.wsdl" MetadataType="Wsdl" ID="d0a8330c-cd45-4316-9c6c-ddc11a18d396" SourceId="1" SourceUrl="http://localhost/StockTradingService?wsdl=wsdl0" />
+    <MetadataFile FileName="StockTradingService2.xsd" MetadataType="Schema" ID="c2a7b65c-be4a-4470-8e6e-0180d9313ba9" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
