@@ -92,15 +92,23 @@ namespace Service
             return result;
         }
 
-        public void TransformPrices(List<Model> quotes)
+        public enum PriceTendency
+        {
+            Up,
+            Down,
+            None
+        }
+
+        public void TransformPrices(List<Model> quotes, PriceTendency priceTendency = PriceTendency.None)
         {
             foreach (Model model in quotes)
             {
-                Thread.Sleep(1);
+                Random rand = new Random();                
+                Thread.Sleep(rand.Next(0,10));
                 Random random = new Random();
-                double dayLowPrice = model.DayLowPrice - model.DayLowPrice * 0.05;
-                double dayHighPrice = model.DayHighPrice + model.DayHighPrice * 0.05;
-                model.LastTradePrice = random.NextDouble() * (dayHighPrice - dayLowPrice) + dayLowPrice;
+                double lastTradeMinus5p = model.LastTradePrice - model.LastTradePrice * 0.05;
+                double lastTradePlus5p = model.LastTradePrice + model.LastTradePrice * 0.05;
+                model.LastTradePrice = random.NextDouble() * (lastTradePlus5p - lastTradeMinus5p) + lastTradeMinus5p;
                 if (model.LastTradeDate < DateTime.Now.Date)
                 {
                     model.DayHighPrice = model.LastTradePrice;

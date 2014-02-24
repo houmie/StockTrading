@@ -30,15 +30,6 @@ namespace XBAPClient
             
         }
 
-        //[Import]
-        //public DependencyObject ShellPage
-        //{
-        //    set 
-        //    { 
-        //        Bootstrapper.ShellPage = this; 
-        //    }
-        //}
-
         [Import]
         public MainViewModel ViewModel
         {

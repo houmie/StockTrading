@@ -53,7 +53,7 @@ namespace XBAPClient
             set {
                 if (value != _model.DayHighPrice)
                 {
-                    DayHighPrice = value;
+                    _model.DayHighPrice = value;
                     OnPropertyChanged("DayHighPrice");
                 }
             }
@@ -66,7 +66,7 @@ namespace XBAPClient
             {
                 if (value != _model.DayLowPrice)
                 {
-                    DayLowPrice = value;
+                    _model.DayLowPrice = value;
                     OnPropertyChanged("DayLowPrice");
                 }
             }
@@ -79,7 +79,7 @@ namespace XBAPClient
             {
                 if (value != _model.LastTradePrice)
                 {
-                    LastTradePrice = value;
+                    _model.LastTradePrice = value;
                     OnPropertyChanged("LastTradePrice");
                 }
             }
@@ -92,7 +92,7 @@ namespace XBAPClient
             {
                 if (value != _model.LastTradeDate)
                 {
-                    LastTradeDate = value;
+                    _model.LastTradeDate = value;
                     OnPropertyChanged("LastTradeDate");
                 }
             }
@@ -105,7 +105,7 @@ namespace XBAPClient
             {
                 if (value != _model.OpenPrice)
                 {
-                    OpenPrice = value;
+                    _model.OpenPrice = value;
                     OnPropertyChanged("OpenPrice");
                 }
             }

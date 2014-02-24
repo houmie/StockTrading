@@ -50,12 +50,9 @@ namespace Service.Tests
         public void LastTradePriceChangeTest()
         {            
             List<Model> quotes = new List<Model> { _model };
-            double lastTradePrice = quotes[0].LastTradePrice;            
-            double dayLowPrice = quotes[0].DayLowPrice - quotes[0].DayLowPrice * 0.05;
-            double dayHighPrice = quotes[0].DayHighPrice + quotes[0].DayHighPrice * 0.05;
-            double dayOpenPrice = quotes[0].OpenPrice;
-            _service.TransformPrices(quotes);                        
-            Assert.True(quotes[0].LastTradePrice <= dayHighPrice && quotes[0].LastTradePrice >= dayLowPrice);
+            double lastTradePrice = quotes[0].LastTradePrice;                     
+            _service.TransformPrices(quotes, Service.PriceTendency.Down);
+            Assert.True(quotes[0].LastTradePrice <= lastTradePrice + (lastTradePrice * 0.05) && quotes[0].LastTradePrice >= lastTradePrice - (lastTradePrice * 0.05));
         }
 
         [Test()]

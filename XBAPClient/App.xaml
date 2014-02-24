@@ -4,6 +4,6 @@
              Exit="Application_Exit"
              >
     <Application.Resources>
-        
+        <ResourceDictionary Source="/DataGridThemes;component/ExpressionDark.xaml" />
     </Application.Resources>
 </Application>

@@ -7,18 +7,120 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="600"
       Title="Page1">
+    <Page.Resources>
+        <Style TargetType="DataGridCell">            
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Binding.TargetUpdated">                
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="LimeGreen" Duration="0:0:0.3" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" AutoReverse="True"/>
+                        </Storyboard>
+                    </BeginStoryboard>                
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type oxy:Plot}">
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="PlotAreaBorderColor" Value="White"/>
+            <Setter Property="TextColor" Value="White"/>            
+            <Setter Property="IsLegendVisible" Value="True"/>
+            <Setter Property="LegendPlacement" Value="Outside" />
+            <Setter Property="LegendPosition" Value="TopRight" />
+            <Setter Property="LegendBackground" Value="White" />
+            <Setter Property="IsMouseWheelEnabled" Value="True" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="IsManipulationEnabled" Value="true" />
+            <Setter Property="DefaultTrackerTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <oxy:TrackerControl Position="{Binding Position}" LineExtents="{Binding PlotModel.PlotArea}">
+                            <oxy:TrackerControl.Content>
+                                <TextBlock Text="{Binding}" Margin="7" />
+                            </oxy:TrackerControl.Content>
+                        </oxy:TrackerControl>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!--<Setter Property="ZoomRectangleTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Fill="#40FFFF00" Stroke="Black" StrokeDashArray="3,1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type oxy:Plot}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid x:Name="PART_Grid" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
+    </Page.Resources>
     <Grid>
         <StackPanel Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-            <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" ItemsSource="{Binding DatagridSource}" AutoGenerateColumns="true" Width="580" Height="200">
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Header="Col 0" Binding="{Binding Symbol}" />
-                    <DataGridTextColumn Header="Col 1" Binding="{Binding Name}" />
-                </DataGrid.Columns>-->
+            <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" ItemsSource="{Binding DatagridSource}" AutoGenerateColumns="false" SelectionMode="Extended">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTemplateColumn Header="Last Trade Price">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LastTradePrice, NotifyOnTargetUpdated=True}"/>                                
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="Last Trade Price" Binding="{Binding LastTradePrice}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>                                    
+                                    <DataTrigger Binding="{Binding LastTradePrice}" Value="True">
+                                        <DataTrigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation To="Aqua" Duration="0:0:0.3" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </DataTrigger.EnterActions>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>                        
+                    </DataGridTextColumn>-->
+                    
+                    <DataGridTextColumn Header="Last Trade Date" Binding="{Binding LastTradeDate}" />                    
+                    <DataGridTemplateColumn Header="Opening Price">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding OpenPrice, NotifyOnTargetUpdated=True}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>                    
+                    <DataGridTemplateColumn Header="Day High Price">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DayHighPrice, NotifyOnTargetUpdated=True}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>                    
+                    <DataGridTemplateColumn Header="Day Low Price">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DayLowPrice,  NotifyOnTargetUpdated=True}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
             </DataGrid>
-            <oxy:Plot Name="chart" Title="{Binding Title}" Height="336">
-                <oxy:Plot.Series>
+            <oxy:Plot Name="chart" Title="{Binding Title}" Height="376" RefreshFlag="{Binding Refresh}">
+                <oxy:Plot.Series>                    
                     <oxy:LineSeries ItemsSource="{Binding Chart}"/>
+                    <oxy:LineSeries ItemsSource="{Binding Chart1}"/>
+                    <oxy:LineSeries ItemsSource="{Binding Chart2}"/>
                 </oxy:Plot.Series>
+                
             </oxy:Plot>
         </StackPanel>
 
