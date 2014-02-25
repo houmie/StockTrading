@@ -44,7 +44,7 @@ namespace Service
         public List<Model> ReadStockPriceFromCSV()
         {
             var result = new List<Model>();
-            //DownloadStockPriceFromYahoo();
+            DownloadStockPriceFromYahoo();
             if (File.Exists(_path))
             {                
                 using (var myReader = new TextFieldParser(_path))
