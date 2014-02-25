@@ -22,10 +22,7 @@ namespace XBAPClient
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            //Subscribe.
-            Console.WriteLine("Subscribing");
-
+                        
             Bootstrapper bootstrapper = new Bootstrapper();
             bootstrapper.Run();
         }

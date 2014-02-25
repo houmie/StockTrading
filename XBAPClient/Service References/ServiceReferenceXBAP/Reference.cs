@@ -43,6 +43,9 @@ namespace XBAPClient.ServiceReferenceXBAP {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SymbolField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TradeTimeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -140,6 +143,19 @@ namespace XBAPClient.ServiceReferenceXBAP {
                 if ((object.ReferenceEquals(this.SymbolField, value) != true)) {
                     this.SymbolField = value;
                     this.RaisePropertyChanged("Symbol");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TradeTime {
+            get {
+                return this.TradeTimeField;
+            }
+            set {
+                if ((this.TradeTimeField.Equals(value) != true)) {
+                    this.TradeTimeField = value;
+                    this.RaisePropertyChanged("TradeTime");
                 }
             }
         }

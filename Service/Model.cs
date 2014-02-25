@@ -15,5 +15,6 @@ namespace Service
         public double OpenPrice { get; set; }
         public double DayHighPrice { get; set; }
         public double DayLowPrice { get; set; }
+        public DateTime TradeTime { get; set; }
     }
 }

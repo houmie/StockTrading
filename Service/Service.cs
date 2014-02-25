@@ -80,6 +80,7 @@ namespace Service
                             double dayLowPrice;
                             double.TryParse(row[6], out dayLowPrice);
                             model.DayLowPrice = dayLowPrice;
+                            model.TradeTime = DateTime.Today.Date + new TimeSpan(8, 0, 0);
                             result.Add(model);
                         }
                         catch (MalformedLineException)
@@ -99,13 +100,10 @@ namespace Service
             None
         }
 
-        public void TransformPrices(List<Model> quotes, PriceTendency priceTendency = PriceTendency.None)
+        public void TransformPrices(List<Model> quotes, Random random)
         {
             foreach (Model model in quotes)
             {
-                Random rand = new Random();                
-                Thread.Sleep(rand.Next(0,10));
-                Random random = new Random();
                 double lastTradeMinus5p = model.LastTradePrice - model.LastTradePrice * 0.05;
                 double lastTradePlus5p = model.LastTradePrice + model.LastTradePrice * 0.05;
                 model.LastTradePrice = random.NextDouble() * (lastTradePlus5p - lastTradeMinus5p) + lastTradeMinus5p;
@@ -118,6 +116,7 @@ namespace Service
                 model.LastTradeDate = DateTime.Now.Date;
                 model.DayHighPrice = model.LastTradePrice > model.DayHighPrice ? model.LastTradePrice : model.DayHighPrice;
                 model.DayLowPrice = model.LastTradePrice < model.DayLowPrice ? model.LastTradePrice : model.DayLowPrice;
+                model.TradeTime = model.TradeTime + TimeSpan.FromMinutes(2);
             }
         }
 
@@ -149,10 +148,11 @@ namespace Service
                     {
                         lock (_locker)
                         {
-                            for (int i = 0; i < 25; i++)
+                            Random random = new Random();
+                            for (int i = 0; i < 240; i++) // 8 hours => 4 minutes = 240 seconds
                             {
                                 Thread.Sleep(1000);
-                                TransformPrices(_quotes);
+                                TransformPrices(_quotes, random);
                                 PriceChangeEventArgs e = new PriceChangeEventArgs(_quotes);
                                 PriceChanged(this, e);
                             }

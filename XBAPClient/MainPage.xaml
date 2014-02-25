@@ -6,7 +6,8 @@
       xmlns:oxy="http://oxyplot.codeplex.com"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="600"
-      Title="Page1">
+      Background="Black"
+      Title="Stock Trading Simulator">
     <Page.Resources>
         <Style TargetType="DataGridCell">            
             <Style.Triggers>
@@ -19,8 +20,12 @@
                 </EventTrigger>
             </Style.Triggers>
         </Style>
+
         <Style TargetType="{x:Type oxy:Plot}">
             <Setter Property="Background" Value="Black" />
+        </Style>
+
+        <!--
             <Setter Property="PlotAreaBorderColor" Value="White"/>
             <Setter Property="TextColor" Value="White"/>            
             <Setter Property="IsLegendVisible" Value="True"/>
@@ -41,7 +46,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <!--<Setter Property="ZoomRectangleTemplate">
+            <Setter Property="ZoomRectangleTemplate">
                 <Setter.Value>
                     <ControlTemplate>
                         <Rectangle Fill="#40FFFF00" Stroke="Black" StrokeDashArray="3,1" />
@@ -56,8 +61,8 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>-->
-        </Style>
+            </Setter>
+        </Style>-->
     </Page.Resources>
     <Grid>
         <StackPanel Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
@@ -68,7 +73,7 @@
                     <DataGridTemplateColumn Header="Last Trade Price">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LastTradePrice, NotifyOnTargetUpdated=True}"/>                                
+                                <TextBlock Text="{Binding LastTradePrice, NotifyOnTargetUpdated=True, StringFormat=#.00}"/>                                
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -90,36 +95,36 @@
                         </DataGridTextColumn.CellStyle>                        
                     </DataGridTextColumn>-->
                     
-                    <DataGridTextColumn Header="Last Trade Date" Binding="{Binding LastTradeDate}" />                    
+                    <DataGridTextColumn Header="Last Trade Date" Binding="{Binding LastTradeDate, StringFormat=d}" />                    
                     <DataGridTemplateColumn Header="Opening Price">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding OpenPrice, NotifyOnTargetUpdated=True}" />
+                                <TextBlock Text="{Binding OpenPrice, NotifyOnTargetUpdated=True, StringFormat=#.00}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>                    
                     <DataGridTemplateColumn Header="Day High Price">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DayHighPrice, NotifyOnTargetUpdated=True}"/>
+                                <TextBlock Text="{Binding DayHighPrice, NotifyOnTargetUpdated=True, StringFormat=#.00}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>                    
                     <DataGridTemplateColumn Header="Day Low Price">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DayLowPrice,  NotifyOnTargetUpdated=True}" />
+                                <TextBlock Text="{Binding DayLowPrice,  NotifyOnTargetUpdated=True, StringFormat=#.00}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <oxy:Plot Name="chart" Title="{Binding Title}" Height="376" RefreshFlag="{Binding Refresh}">
-                <oxy:Plot.Series>                    
+            <oxy:Plot Name="chart" Title="{Binding Title}" Height="376" RefreshFlag="{Binding Refresh}" Model="{Binding ChartModel}">
+                <!--<oxy:Plot.Series>                    
                     <oxy:LineSeries ItemsSource="{Binding Chart}"/>
                     <oxy:LineSeries ItemsSource="{Binding Chart1}"/>
                     <oxy:LineSeries ItemsSource="{Binding Chart2}"/>
-                </oxy:Plot.Series>
+                </oxy:Plot.Series>-->
                 
             </oxy:Plot>
         </StackPanel>

@@ -15,6 +15,7 @@
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OpenPrice" type="xs:double" />
       <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TradeTime" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Model" nillable="true" type="tns:Model" />
