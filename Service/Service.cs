@@ -24,7 +24,7 @@ namespace Service
 
         public Service()
         {
-            _quotes = ReadStockPriceFromCSV();
+            
         }
 
 
@@ -32,12 +32,23 @@ namespace Service
         {
             if (File.Exists(_path))
             {
-                File.Delete(_path);
+                DateTime lastModified = System.IO.File.GetLastWriteTime(_path);
+                if (lastModified.Date < DateTime.Today)
+                {
+                    File.Delete(_path);
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("http://finance.yahoo.com/d/quotes.csv?s=MSFT+INTC+GM&f=snl1d1ohg", _path);
+                    }
+                }
             }
-            using (WebClient Client = new WebClient())
+            else
             {
-                Client.DownloadFile("http://finance.yahoo.com/d/quotes.csv?s=MSFT+INTC+GM&f=snl1d1ohg", _path);
-            }
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("http://finance.yahoo.com/d/quotes.csv?s=MSFT+INTC+GM&f=snl1d1ohg", _path);
+                }
+            }            
         }
 
 
@@ -117,8 +128,9 @@ namespace Service
 
         public void Subscribe()
         {
+            _quotes = ReadStockPriceFromCSV();
             _callback = OperationContext.Current.GetCallbackChannel<IClient>();            
-            PriceChanged += PriceChangeHandler;
+            PriceChanged += PriceChangeHandler;           
 
             Task task = PublishPriceChange();            
         }

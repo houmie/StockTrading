@@ -66,7 +66,7 @@
     </Page.Resources>
     <Grid>
         <StackPanel Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-            <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" ItemsSource="{Binding DatagridSource}" AutoGenerateColumns="false" SelectionMode="Extended">
+            <DataGrid HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" ItemsSource="{Binding DatagridSource}" AutoGenerateColumns="false" SelectionMode="Extended">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
