@@ -148,7 +148,7 @@ namespace Service
                     {
                         lock (_locker)
                         {
-                            Random random = new Random();
+                            Random random = RandomProvider.GetThreadRandom();
                             for (int i = 0; i < 240; i++) // 8 hours => 4 minutes = 240 seconds
                             {
                                 Thread.Sleep(1000);
