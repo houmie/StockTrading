@@ -4,6 +4,13 @@ StockTrading
 A local demo for C# .NET utilising WPF, WCF, PRISM, MVVM, Threading
 
 
+Requirement
+===========
+
+1) Open the Solution and click on 'Manage NuGet packages for the solution'. Then search online for 'OxyPlot WPF' and install it.
+2) If the client can't find the PRISM references, delete them. Right click on References and add all libs from  StockTrading\Lib into the XBAPClient project.
+
+
 Service
 =======
 
