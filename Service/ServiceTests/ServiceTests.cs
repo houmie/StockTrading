@@ -15,11 +15,13 @@ namespace Service.Tests
     {
         Service _service;
         Model _model;
+        Random _random;
         readonly string _path = @"quotes.csv";
 
         [SetUp]
         public void Init()
         {
+            _random = new Random();
             _service = new Service();            
             _model = new Model() { Symbol = "MSFT", Name = "Microsoft Corpora", LastTradePrice = 37.575, LastTradeDate = DateTime.Now.AddDays(-1), OpenPrice = 37.65, DayLowPrice = 37.51, DayHighPrice = 37.78 };
         }
@@ -51,7 +53,8 @@ namespace Service.Tests
         {            
             List<Model> quotes = new List<Model> { _model };
             double lastTradePrice = quotes[0].LastTradePrice;                     
-            _service.TransformPrices(quotes, Service.PriceTendency.Down);
+            
+            _service.TransformPrices(quotes, _random);
             Assert.True(quotes[0].LastTradePrice <= lastTradePrice + (lastTradePrice * 0.05) && quotes[0].LastTradePrice >= lastTradePrice - (lastTradePrice * 0.05));
         }
 
@@ -59,7 +62,7 @@ namespace Service.Tests
         public void LastTradeDateSetToTodayTest()
         {
             List<Model> quotes = new List<Model> { _model };            
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             Assert.True(quotes[0].LastTradeDate == DateTime.Now.Date);
         }
 
@@ -67,9 +70,9 @@ namespace Service.Tests
         public void DayHighPriceMustBeTheHighestDayTradePriceTest()
         {
             List<Model> quotes = new List<Model> { _model };
-            _service.TransformPrices(quotes);            
+            _service.TransformPrices(quotes, _random);            
             double lastTradePrice = quotes[0].LastTradePrice;
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             double lastTradePrice2 = quotes[0].LastTradePrice;
             lastTradePrice = lastTradePrice > lastTradePrice2 ? lastTradePrice : lastTradePrice2;
             Assert.AreEqual(lastTradePrice, quotes[0].DayHighPrice);
@@ -79,9 +82,9 @@ namespace Service.Tests
         public void DayLowPriceMustBeTheLowestDayTradePriceTest()
         {
             List<Model> quotes = new List<Model> { _model };
-            _service.TransformPrices(quotes);            
+            _service.TransformPrices(quotes, _random);            
             double lastTradePrice = quotes[0].LastTradePrice;
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             double lastTradePrice2 = quotes[0].LastTradePrice;
             lastTradePrice = lastTradePrice < lastTradePrice2 ? lastTradePrice : lastTradePrice2;
             Assert.AreEqual(lastTradePrice, quotes[0].DayLowPrice);
@@ -91,7 +94,7 @@ namespace Service.Tests
         public void DayLowPriceMustBeSetToTodaysLastTradeForFirstTime()
         {
             List<Model> quotes = new List<Model> { _model };
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             Assert.AreEqual(_model.DayLowPrice, _model.LastTradePrice);
         }
 
@@ -99,7 +102,7 @@ namespace Service.Tests
         public void DayhighPriceMustBeSetToTodaysLastTradeForFirstTime()
         {
             List<Model> quotes = new List<Model> { _model };
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             Assert.AreEqual(_model.DayHighPrice, _model.LastTradePrice);
         }
 
@@ -107,9 +110,9 @@ namespace Service.Tests
         public void DayOpenPriceMustBeSetToTodaysFirstTrade()
         {
             List<Model> quotes = new List<Model> { _model };            
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             double firstTradePrice = _model.LastTradePrice;
-            _service.TransformPrices(quotes);
+            _service.TransformPrices(quotes, _random);
             Assert.AreEqual(_model.OpenPrice, firstTradePrice);
         }
 

@@ -92,13 +92,7 @@ namespace Service
             }
             return result;
         }
-
-        public enum PriceTendency
-        {
-            Up,
-            Down,
-            None
-        }
+               
 
         public void TransformPrices(List<Model> quotes, Random random)
         {
