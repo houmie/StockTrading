@@ -16,6 +16,7 @@ using System.ComponentModel.Composition;
 using XBAPClient.ServiceReferenceXBAP;
 
 
+
 namespace XBAPClient
 {
     [Export]

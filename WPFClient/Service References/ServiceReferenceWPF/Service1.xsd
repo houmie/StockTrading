@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://venuscloud.com/StockTrading" elementFormDefault="qualified" targetNamespace="http://venuscloud.com/StockTrading" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/StockTradingService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Service" />
+  <xs:import schemaLocation="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleStockTrading" />
   <xs:element name="Subscribe">
     <xs:complexType>
       <xs:sequence />
@@ -24,7 +24,7 @@
   <xs:element name="PriceChange">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="quotes" nillable="true" type="q1:ArrayOfModel" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleStockTrading" minOccurs="0" name="quotes" nillable="true" type="q1:ArrayOfModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

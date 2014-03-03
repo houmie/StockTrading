@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using XBAPClient.ServiceReferenceXBAP;
 
 
+
 namespace XBAPClient
 {
     public class RowViewModel : BindableBase

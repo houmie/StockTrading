@@ -15,7 +15,7 @@ namespace WPFClient.ServiceReferenceWPF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Model", Namespace="http://schemas.datacontract.org/2004/07/Service")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Model", Namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleStockTrading")]
     [System.SerializableAttribute()]
     public partial class Model : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -42,6 +42,9 @@ namespace WPFClient.ServiceReferenceWPF {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SymbolField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TradeTimeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -140,6 +143,19 @@ namespace WPFClient.ServiceReferenceWPF {
                 if ((object.ReferenceEquals(this.SymbolField, value) != true)) {
                     this.SymbolField = value;
                     this.RaisePropertyChanged("Symbol");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TradeTime {
+            get {
+                return this.TradeTimeField;
+            }
+            set {
+                if ((this.TradeTimeField.Equals(value) != true)) {
+                    this.TradeTimeField = value;
+                    this.RaisePropertyChanged("TradeTime");
                 }
             }
         }

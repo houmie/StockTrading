@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-10.2.2">
+  <Role name="WCFServiceWebRoleStockTrading">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=venuscloud;AccountKey=WdcO5MOLYRlGvLhjTGcLjWR8sv45A13Ag5LpyIn0EYHdtQP/rF3VMGBw9NL/CV/PhTXnyCuYUwacOo1rgljDcQ==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="houmie" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEDErzZOJINGwQTAzQj/9Zn8wDQYJKoZIhvcNAQEBBQAEggEAVGYpvzBczR9K77nl89PzpvMy+7M2qkD1BzVKtCoKQsXJnCgWTFZomVIki1e+fghy1HiClMOOZ5iPsnnN7OJYg9dyu+8GQNUFS/2TPGrrO6vCpPYGxkT/f6f5OKux3WyGr1DLby+4GmdPZgsZCUNczbhSEMZpsYTLemjGz6BaXm5hnKKxW5Upl4wVRxr6FoGMVx0JZHfMy1mNt9Jt/kAwJKwQFCn+wIDblC2ILOc1V2tFF9ZwnicX3KPgBvKVetMBuWuZw/q5BRSsUTiNTQBwB6hhpiq2ULQJrIHWFuDxFMH63frPrw53nBDuHUxsbk66hwMfAF7li96WeHeInLjPnzAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECIkX1EL9fGOkgBAOxelDu/2mycuL9D6T9i6f" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2015-02-25T23:59:59.0000000+00:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="F5F337A3E52F3905D4E711C099B92781E4F39056" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

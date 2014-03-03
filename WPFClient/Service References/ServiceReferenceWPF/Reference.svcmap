@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7ef826d4-a221-4c7e-85cc-9a829709cf30" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9d6d7b3c-9f92-486d-af88-8e3265a5b273" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/StockTradingService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="StockTradingService.disco" MetadataType="Disco" ID="fc384703-b03a-4919-94d8-70ac14d62276" SourceId="1" SourceUrl="http://localhost/StockTradingService?disco" />
-    <MetadataFile FileName="StockTradingService.xsd" MetadataType="Schema" ID="e9da704b-dd19-40e4-b28e-4b26ce9bb383" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd1" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="d8a9cf8b-040d-408b-aa39-d0e0efefcdaf" SourceId="1" SourceUrl="http://localhost/StockTradingService?wsdl" />
-    <MetadataFile FileName="StockTradingService1.xsd" MetadataType="Schema" ID="7da4a2c5-e0bc-4c67-8265-e0f8f3cc3f53" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd0" />
-    <MetadataFile FileName="StockTradingService.wsdl" MetadataType="Wsdl" ID="d0a8330c-cd45-4316-9c6c-ddc11a18d396" SourceId="1" SourceUrl="http://localhost/StockTradingService?wsdl=wsdl0" />
-    <MetadataFile FileName="StockTradingService2.xsd" MetadataType="Schema" ID="c2a7b65c-be4a-4470-8e6e-0180d9313ba9" SourceId="1" SourceUrl="http://localhost/StockTradingService?xsd=xsd2" />
+    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="79448dfe-c980-464b-a098-00bdf38cbdfe" SourceId="1" SourceUrl="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="38ebb50d-11a4-47c0-a292-c63e05ec8f21" SourceId="1" SourceUrl="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?wsdl" />
+    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="99499f1c-cdc3-49d7-8073-ca8224046393" SourceId="1" SourceUrl="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?disco" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="da8d7a8a-384a-4da7-9b3c-29bd8f9585e2" SourceId="1" SourceUrl="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="4ab48e86-9a9b-49a2-8622-6199c1d7140e" SourceId="1" SourceUrl="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="872d0de9-ea1a-47df-b7e2-80f2e585f740" SourceId="1" SourceUrl="http://4c6fff6548dc4e249ce4671122dafd33.cloudapp.net/Service.svc?wsdl=wsdl0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataGridThemes">
+      <HintPath>..\Lib\DataGridThemes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\Lib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
@@ -129,19 +132,21 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Service References\ServiceReferenceWPF\Service.wsdl" />
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService.wsdl" />
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService.xsd">
+    <None Include="Service References\ServiceReferenceWPF\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService1.xsd">
+    <None Include="Service References\ServiceReferenceWPF\Service1.wsdl" />
+    <None Include="Service References\ServiceReferenceWPF\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService2.xsd">
+    <None Include="Service References\ServiceReferenceWPF\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -150,7 +155,7 @@
     <WCFMetadataStorage Include="Service References\ServiceReferenceWPF\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReferenceWPF\StockTradingService.disco" />
+    <None Include="Service References\ServiceReferenceWPF\Service.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReferenceWPF\configuration91.svcinfo" />
